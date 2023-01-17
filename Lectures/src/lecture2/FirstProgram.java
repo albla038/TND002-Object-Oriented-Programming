@@ -11,7 +11,7 @@ public class FirstProgram {
 		String s = null;
 		System.out.println(s);
 
-		String s = "-Hello World";
+		s = "-Hello World";
 		System.out.println(s);
 	}
 	
