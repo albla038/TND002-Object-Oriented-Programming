@@ -10,6 +10,9 @@ public class FirstProgram {
 		
 		String s = null;
 		System.out.println(s);
+
+		String s = "-Hello World";
+		System.out.println(s);
 	}
 	
 	public static String consoleOutput(String arg) {
