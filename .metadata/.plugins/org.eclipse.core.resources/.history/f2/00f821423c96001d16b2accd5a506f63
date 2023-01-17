@@ -1,0 +1,15 @@
+package lecture2;
+
+public class FirstProgram {
+
+	public static void main(String[] args) {
+		String test = consoleOutput("Hello World");
+		System.out.println(test);
+	}
+	
+	public static String consoleOutput(String arg) {
+		System.out.println(arg);
+		return arg;
+	}
+	
+}

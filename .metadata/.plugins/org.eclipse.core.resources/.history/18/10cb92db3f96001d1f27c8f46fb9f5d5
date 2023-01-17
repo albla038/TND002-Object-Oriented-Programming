@@ -1,0 +1,18 @@
+package lecture2;
+
+public class FirstProgram {
+
+	public static void main(String[] args) {
+		System.out.println(consoleOutput("HEJ"));
+	}
+	
+	public static String consoleOutput(String arg) {
+		System.out.println(arg);
+		return arg;
+	}
+	
+	public static void consoleOutput(int arg) {
+		System.out.println(arg);
+	}
+	
+}
