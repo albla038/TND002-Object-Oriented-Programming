@@ -24,9 +24,9 @@ public class Lesson1A {
 //		d3 = 5.0;
 //		System.out.println(d3);
 //		
-		System.out.println(Manipulations.convert(1));
+		System.out.println(ManipulationsA.convert(1));
 		
-		System.out.println(Manipulations.convert(4.0));
+		System.out.println(ManipulationsA.convert(4.0));
 //		
 //		Manipulations manip = new Manipulations();
 //		

@@ -1,6 +1,6 @@
 package lesson1a;
 
-public class Manipulations {
+public class ManipulationsA {
 	
 	public static double convert(int arg){return (double) arg;}
 	
