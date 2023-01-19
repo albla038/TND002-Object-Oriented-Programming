@@ -1,6 +1,6 @@
 package lesson1a;
 
-public class Manipulations {
+public class ManipulationsA {
 	
 	public static boolean returnAnInt = true;
 	private static double value = 4.0;

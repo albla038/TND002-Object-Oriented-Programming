@@ -24,10 +24,10 @@ public class Lesson1A {
 		final double d3;
 		d3 = 4.0;
 		
-		System.out.println(Manipulations.convert(44));
-		System.out.println(Manipulations.convert(77.67));
+		System.out.println(ManipulationsA.convert(44));
+		System.out.println(ManipulationsA.convert(77.67));
 		
-		Manipulations manip = new Manipulations();
+		ManipulationsA manip = new ManipulationsA();
 		System.out.println(manip.toString());
 	}
 
