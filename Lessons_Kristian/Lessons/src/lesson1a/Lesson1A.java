@@ -27,12 +27,17 @@ public class Lesson1A {
 		System.out.println(ManipulationsA.convert(1));
 		
 		System.out.println(ManipulationsA.convert(4.0));
+		
+		ManipulationsA.convert();
 //		
-//		Manipulations manip = new Manipulations();
+//		ManipulationsA manip = new ManipulationsA();
 //		
 //		System.out.println(manip);
+		
 //		
 //		Manipulations.convert();
+		
+		//variable with same name can exist in main and class as they are accessed in different ways
 		
 		//Can make a dummy of a main "Lesson1A dummy = new Lesson1A();
 		
