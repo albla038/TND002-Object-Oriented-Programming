@@ -4,6 +4,21 @@ public class ManipulationsB {
 	private static String species;
 	private String name;
 	
+	public ManipulationsB() {
+		name = ""; species = "Human"; 
+		System.out.println(name); System.out.println(species);
+	}
+	
+	public ManipulationsB(String arg) {
+		name = arg; species = "Human";
+		System.out.println(name); System.out.println(species);
+	}
+	
+	public ManipulationsB(String arg1, String arg2) {
+		name = arg1; species = arg2;
+		System.out.println(name); System.out.println(species);
+	}
+	
 	public void setName(String arg) {name = arg;}
 	public String getName() {return name;}
 	
@@ -20,5 +35,9 @@ public class ManipulationsB {
 		String swap = name;
 		name = arg.getName();
 		arg.setName(swap);
+	}
+	
+	public String toString() {
+		return String.format("Species: %-10s, Name: %10s", species, name);
 	}
 }
