@@ -1,12 +1,19 @@
 package lecture5;
 
+/**
+ * @author Albert
+ * @version 1.0
+ * @since 2023-01-25
+ * Custom ArrayList
+ */
+
 public class DynamicArray {
 	private int[] theArray;
 	
 	public DynamicArray() {
 		theArray = null;
 	}
-	
+
 	public int addElement(int arg) {
 		
 		if (theArray == null) {

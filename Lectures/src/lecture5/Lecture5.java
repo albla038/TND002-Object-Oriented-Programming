@@ -6,6 +6,7 @@ public class Lecture5 {
 
 	public static void main(String[] args) {
 		
+		/*
 		Random r = new Random();
 		//System.out.println(r.nextDouble());
 		
@@ -23,5 +24,18 @@ public class Lecture5 {
 		System.out.println(g1);
 		
 		Generics<Integer> g2 = new Generics<Integer>(1);
+		*/
+		
+		ArrayList<Double> dAL = new ArrayList<Double>();
+		
+		Double d1 = 1.0, d2 = 2.0, d3 = 3.0, d4 = 4.0, d5 = 5.0;
+		
+		dAL.add(d1); dAL.add(d2); dAL.add(d3); dAL.add(1, d4); //dAL.add(1, d5);
+		System.out.println(dAL);
+		
+		//dAL.remove(1);
+		d1 = 56.0;
+		System.out.println(dAL);
+		
 	}
 }
