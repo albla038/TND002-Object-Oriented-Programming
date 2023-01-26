@@ -20,12 +20,12 @@ public class Vector {
 		x = vdef.x; y = vdef.y; z = vdef.z;
 	}
 	
-	public static Vector plus(Vector arg1, Vector arg2) { //Hur är det med deep copy för argument
+	public static Vector plus(Vector arg1, Vector arg2) { 
 		double rX = arg1.x + arg2.x,
 				rY = arg1.y + arg2.y,
 				rZ = arg1.z + arg2.z;
 		
-		return new Vector(rX, rY, rZ); //Går det att optimera?
+		return new Vector(rX, rY, rZ); 
 	}
 	
 	public Vector minus(Vector arg) {
@@ -44,12 +44,10 @@ public class Vector {
 		return new Vector(rX, rY, rZ); 
 	}
 	
-	public Vector mult(Vector arg) { //Multiplicerar elementvis
-		x *= arg.x;
-		y *= arg.y;
-		z *= arg.z;
+	public double mult(Vector arg) { //Multiplicerar elementvis
+		double r = x * arg.x + y * arg.y + z * arg.z;
 		
-		return new Vector(x, y, z); 
+		return r; 
 	}
 	
 	public double length() {
@@ -58,18 +56,18 @@ public class Vector {
 	}
 	
 	public Vector matrixMult(double[][] arg) {
-		int rows = arg.length;
-		int preferedRowsAndCols = 3;
 		
 		if((arg.length == 3) && (arg[0].length == 3) &&
 				(arg[1].length == 3) && (arg[2].length == 3)) {//Kolla om matrisen har 3 rader
-			double rX = x * arg[0][0] + y * arg[0][1] + z * arg[0][2];
-			double rY = x * arg[1][0] + y * arg[1][1] + z * arg[1][2];
-			double rZ = x * arg[2][0] + y * arg[2][1] + z * arg[2][2];
+			double rX = x * arg[0][0] + y * arg[0][1] + z * arg[0][2],
+					rY = x * arg[1][0] + y * arg[1][1] + z * arg[1][2],
+					rZ = x * arg[2][0] + y * arg[2][1] + z * arg[2][2];
 			
 			return new Vector(rX, rY, rZ);
 		}
 		/*
+		int rows = arg.length;
+		int preferedRowsAndCols = 3;
 		if (rows == preferedRowsAndCols) {//Kolla om matrisen har 3 rader
 			
 			boolean flag = true;
