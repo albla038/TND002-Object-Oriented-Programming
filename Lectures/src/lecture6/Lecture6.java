@@ -20,8 +20,11 @@ public class Lecture6 {
 		BufferedWriter writer = new BufferedWriter(fWr);
 		
 		writer.write("Hello");
+		writer.newLine();
+		writer.write("World");
 		
-		writer.flush();
+		writer.close();
+		
 		
 		/*
 		String s = "Hello";
