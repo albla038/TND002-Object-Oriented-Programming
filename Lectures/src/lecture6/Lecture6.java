@@ -4,18 +4,37 @@ import java.io.*;
 public class Lecture6 {
 
 	public static void main(String[] args) throws IOException {
-		BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 		
-		String in;
-		do {
-			System.out.print("Input: ");
-			 in = consoleReader.readLine();
-			System.out.println(in);	
-		} while (!in.equals("end"));
+		File f = new File("File.txt");
 		
-		consoleReader.close();
+		FileReader fr = new FileReader(f);
+		BufferedReader reader = new BufferedReader(fr);
 		
-		System.out.println("\nDone");
+		String line;
+		while ( (line = reader.readLine()) != null) {
+			System.out.println(line);
+		}
+		reader.close();
+		
+		FileWriter fWr = new FileWriter("File2.txt",true);
+		BufferedWriter writer = new BufferedWriter(fWr);
+		
+		writer.write("Hello");
+		
+		writer.flush();
+		
+		/*
+		String s = "Hello";
+		int i;
+		try {
+			i = Integer.parseInt(s);
+			System.out.println(i);
+		}
+		catch (NumberFormatException ierr) {
+			System.out.println("Mistake\n-------\n");
+			ierr.printStackTrace();
+		}
+		 */
+		
 	}
-
 }
