@@ -29,4 +29,18 @@ public class Database {
 		return result;
 	}
 	
+	public String save(String arg) throws IOException{
+		
+		String result;
+		BufferedWriter bw = new BufferedWriter(new FileWriter(arg, false));
+		
+		for(int i = 0; i < words.size(); i++) {
+			bw.write(words.get(i)); bw.newLine();
+		}
+		bw.close();
+		result = String.format("Wrote %4d words to the file %15s", words.size(), arg);
+		
+		return result;
+	}
+	
 }
