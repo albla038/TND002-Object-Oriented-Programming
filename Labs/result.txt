@@ -1,0 +1,68 @@
+
+Content:
+Word:      hello   Count:   3
+Word:      world   Count:   1
+Word:        how   Count:   1
+Word:        are   Count:   1
+Word:        you   Count:   1
+Word:         oh   Count:   1
+Word:       yeah   Count:   1
+Word:       this   Count:   1
+Word:       year   Count:   1
+Word:         is   Count:   2
+Word:      great   Count:   2
+Word:        and   Count:   1
+Word: everything   Count:   1
+Word:       else   Count:   1
+Word:       blah   Count:   2
+Sorted by counts
+Content:
+Word:      hello   Count:   3
+Word:         is   Count:   2
+Word:      great   Count:   2
+Word:       blah   Count:   2
+Word:        you   Count:   1
+Word:         oh   Count:   1
+Word:       yeah   Count:   1
+Word:       this   Count:   1
+Word:       year   Count:   1
+Word:      world   Count:   1
+Word:        how   Count:   1
+Word:        and   Count:   1
+Word: everything   Count:   1
+Word:       else   Count:   1
+Word:        are   Count:   1
+Sorted alphabetically
+Content:
+Word:        and   Count:   1
+Word:        are   Count:   1
+Word:       blah   Count:   2
+Word:       else   Count:   1
+Word: everything   Count:   1
+Word:      great   Count:   2
+Word:      hello   Count:   3
+Word:        how   Count:   1
+Word:         is   Count:   2
+Word:         oh   Count:   1
+Word:       this   Count:   1
+Word:      world   Count:   1
+Word:       yeah   Count:   1
+Word:       year   Count:   1
+Word:        you   Count:   1
+Word list was reset
+Content:
+Word:        and   Count:   1
+Word:        are   Count:   1
+Word:       blah   Count:   2
+Word:       else   Count:   1
+Word: everything   Count:   1
+Word:      great   Count:   2
+Word:      hello   Count:   3
+Word:        how   Count:   1
+Word:         is   Count:   2
+Word:         oh   Count:   1
+Word:       this   Count:   1
+Word:      world   Count:   1
+Word:       yeah   Count:   1
+Word:       year   Count:   1
+Word:        you   Count:   1

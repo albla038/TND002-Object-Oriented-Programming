@@ -43,10 +43,12 @@ public class Dictionary {
 			return "Word list was reset";
 		} else {
 			Word.setCriterion(arg);
-			for(int i = 0;i < theList.size() - 1; i++) {
-				if(theList.get(i).compareTo(theList.get(i + 1)) == -1) {
-					theList.set(i + 1, theList.set(i, theList.get(i + 1)));
-					//Collections.swap(theList, i, i + 1);
+			for (int i = 0; i < theList.size(); i++) {
+				for (int j = i + 1; j < theList.size(); j++) {
+					if(theList.get(i).compareTo(theList.get(j)) == -1) {
+						//theList.set(j, theList.set(i, theList.get(j)));
+						Collections.swap(theList, i, j);
+					}
 				}
 			}
 			
@@ -73,7 +75,7 @@ public class Dictionary {
 	
 	public String toString() {
 		
-		String result = "Content:\n";
+		String result = "\nContent:\n";
 		
 		for (Word word : theList) {
 			result += word.toString() + "\n";

@@ -38,9 +38,9 @@ public class Word {
 		
 		else if (sortCriterion == BYNAME) {
 			int temp = theWord.compareTo(arg.theWord);
-			if (temp < 0) {
+			if (temp > 0) {
 				result = -1;
-			} else if (temp > 0) {
+			} else if (temp < 0) {
 				result = 1;
 			} else {
 				result = 0;
