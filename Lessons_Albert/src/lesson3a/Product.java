@@ -33,10 +33,10 @@ public class Product {
 		Collections.addAll(availableStores, ALLSTORES);
 	}
 	
-	public String listAvailableStores() {
+	public static String listAvailableStores() {
 		String result = "Number, City\n";
-		for (String store : availableStores) {
-			result += store + " " + availableStores.indexOf(store) + "\n";
+		for (String e : availableStores) {
+			result += e + " " + availableStores.indexOf(e) + "\n";
 		}
 		return result;
 	}
@@ -76,8 +76,8 @@ public class Product {
 			result += "is available in the shops in:\n";
 		}
 		
-		for (String store : stores) {
-			result += store + ", ";
+		for (String e : availableStores) {
+			result += e + ", ";
 		}
 		
 		return result;
