@@ -4,15 +4,11 @@ public class MainClass {
 
 	public static void main(String[] args) {
 		Dictionary td = new Dictionary();
-		td.addWord("Hi");
-		td.addWord("Hello");
-		System.out.println(td.listSize());
-		System.out.println(td.getTheWord(0));
 		
-		Dictionary.WordS wS = new Dictionary.WordS("Hi");
+		Dictionary.Word w = td.new Word("instance Hi");
+		
+		Dictionary.WordS wS = new Dictionary.WordS("class Hi");
 		System.out.println(wS.getWord());
-		
-		
 	}
 
 }
