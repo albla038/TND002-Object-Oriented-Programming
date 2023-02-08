@@ -20,16 +20,27 @@ public class Supermarket {
 	}
 	
 	public void takeInventory() {
-		/*
-		int availableApples = 0;
-		int availableStrawberries = 0;
-		
-		for (Fruit e : availableFruit) {
-			if (e.isThisFruit(null, null))
+		for (Fruit fruit : availableFruit) {
+			String[] fruitInfo = fruit.getInfo();
+			int inStore = fruit.getAmount();
+			int bought = 0;
+			
+			if (fruitInfo[0].equals("Apple")) {
+				for (Apple apple : soldApples) {
+					if (apple.isThisFruit(fruitInfo[0], fruitInfo[1])) {
+						bought += apple.getAmount();
+					}
+				}
+				System.out.println(String.format("Available apples (%6s): %3d, Sold apples: %3d", fruitInfo[1], inStore, bought));
+			}
+			else if (fruitInfo[0].equals("Strawberry")) {
+				for (Strawberry strawberry : soldStrawberries) {
+					if (strawberry.isThisFruit(fruitInfo[0], fruitInfo[1])) {
+						bought += strawberry.getAmount();
+					}
+				}
+				System.out.println(String.format("Available strawberries (%6s): %3d, Sold: %3d", fruitInfo[1], inStore, bought))
+			}			
 		}
-		*/
-		
-		String.format("Available apples %", availableApples, )
-		System.out.println();
 	}
 }
