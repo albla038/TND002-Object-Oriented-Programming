@@ -39,8 +39,46 @@ public class Supermarket {
 						bought += strawberry.getAmount();
 					}
 				}
-				System.out.println(String.format("Available strawberries (%6s): %3d, Sold: %3d", fruitInfo[1], inStore, bought))
+				System.out.println(String.format("Available strawberries (%6s): %3d, Sold: %3d", fruitInfo[1], inStore, bought));
 			}			
 		}
+	}
+	
+	public void buyFruit(String name, String specifics, String customer, int amount) {
+		
+		for (Fruit e : availableFruit) {
+			if (e.isThisFruit(name, specifics)) {
+				if (name.equals("Apple")) {
+					Apple appleTransaction = new Apple(customer, e, amount);
+					if (appleTransaction.getAmount() > 0) {
+						soldApples.add(appleTransaction);
+					}
+				} else if (name.equals("Strawberry")) {
+					Strawberry strawberryTransaction = new Strawberry(customer, e, amount);
+					if (strawberryTransaction.getAmount() > 0) {
+						soldStrawberries.add(strawberryTransaction);
+					}
+				}
+			}
+		}
+	}
+	
+	public String customerInfo(String customer) {
+		
+		String result = "";
+		
+		for (Apple e : soldApples) {
+			if (e.getCustomer().equals(customer)) {
+				result += e.toString() + "\n";
+			}
+		}
+		
+		for (Strawberry e : soldStrawberries) {
+			if (e.getCustomer().equals(customer)) {
+				result += e.toString() + "\n";
+			}
+		}
+		
+		return result;
 	}
 }
