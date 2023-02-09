@@ -37,6 +37,7 @@ public class Lab3 {
 		System.out.println(theBank.checkPerson("Peter"));
 		theBank.currentToSavings("Peter",5000);
 		System.out.println(theBank.checkPerson("Peter"));
+	
 	}
 
 }
