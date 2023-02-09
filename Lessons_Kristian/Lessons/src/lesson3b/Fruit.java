@@ -56,7 +56,6 @@ public class Fruit {
 			return arg;
 		} else {
 			//arg = amount; amount = 0;
-			
 			int temp = amount;
 			amount = 0;
 			return temp;
