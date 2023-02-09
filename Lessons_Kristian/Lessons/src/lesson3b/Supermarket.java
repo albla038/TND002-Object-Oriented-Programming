@@ -16,6 +16,13 @@ public class Supermarket {
 				fruit.stockUp(arg3);
 			}
 		}
+		//for (int i=0; i<availableFruit.size(); i++) {
+		//	if (availableFruit.get(i).isThisFruit(arg1, arg2)) {
+		//		availableFruit.get(i).stockUp(arg3);
+		//	}
+		//}
+		
+		//Call method (availableFruit.get(i)) once, add to temp variable to reduce work load
 	}
 	
 	public void takeInventory() {
@@ -37,8 +44,39 @@ public class Supermarket {
 				System.out.println(String.format("Available strawberries (%6s): %3d, Sold: %3d", fruit.getInfo()[1], fruit.getAmount(), bought));
 			}
 		}
+		
+//		Fruit temp;
+//		String[] temp2;
+//		int tempSold=0;
+//		
+//		for(int i=0; i < availableFruit.size();i++) {
+//			
+//			temp = availableFruit.get(i);
+//			temp2 = temp.getInfo();
+//		
+//			if (temp2[0].equals("Apple")) {
+//				for (int j=0; j < soldApples.size();j++) {
+//					if (soldApples.get(j).isThisFruit(temp2[0], temp2[1])) {
+//						tempSold = tempSold + soldApples.get(j).getAmount();
+//					}
+//				}
+//				System.out.println(String.format("Available apples (%6s): %3d, Sold: %3d",temp2[1],temp.getAmount(),tempSold));
+//			}
+//			else if (temp2[0].equals("Strawberry")) {
+//				for (int j=0; j < soldStrawberries.size();j++) {
+//					if (soldStrawberries.get(j).isThisFruit(temp2[0], temp2[1])) {
+//						tempSold = tempSold + soldStrawberries.get(j).getAmount();
+//					}
+//				}
+//				System.out.println(String.format("Available strawberries (%6s): %3d, Sold: %3d",temp2[1],temp.getAmount(),tempSold));
+//			}
+//		}
+//		
+//		
+//		
 //		for (int i = 0; i < availableFruit.size(); i++) {
-//			String[] fruit = availableFruit.get(i).getInfo();
+//			//more efficient to create "Fruit temp = availableFruit.get(i);", reduces method calls (computational power vs memory?)
+//			String[] fruit = availableFruit.get(i).getInfo(); //more efficient, don't need to call method multiple times
 //			int inStore = availableFruit.get(i).getAmount();
 //			int bought = 0;
 //			if (fruit[0].equals("Apple")) {
@@ -61,26 +99,42 @@ public class Supermarket {
 	}
 	
 	public void buyFruit(String arg1, String arg2, String arg3, int arg4) {
-		for (int i=0; i < availableFruit.size(); i++) {
-			if (availableFruit.get(i).isThisFruit(arg1, arg2)) {
+		for (Fruit fruit : availableFruit) {
+			if (fruit.isThisFruit(arg1, arg2)) {
 				if (arg1.equals("Apple")) {
-					soldApples.add(new Apple(arg3,availableFruit.get(i),arg4));
+					soldApples.add(new Apple(arg3,fruit,arg4));
 				}
 				else if (arg1.equals("Strawberry")) {
-					soldStrawberries.add(new Strawberry(arg3,availableFruit.get(i),arg4));
+					soldStrawberries.add(new Strawberry(arg3,fruit,arg4));
 				} 
 			}
 		}
+//		for (int i=0; i < availableFruit.size(); i++) {
+//			if (availableFruit.get(i).isThisFruit(arg1, arg2)) {
+//				if (arg1.equals("Apple")) {
+//					soldApples.add(new Apple(arg3,availableFruit.get(i),arg4));
+//				}
+//				else if (arg1.equals("Strawberry")) {
+//					soldStrawberries.add(new Strawberry(arg3,availableFruit.get(i),arg4));
+//				} 
+//			}
+//		}
 	}
 	
 	public String customerInfo(String arg) {
 		String result = "";
-		for (int i = 0; i < soldApples.size(); i++) {
-			if (arg.equals(soldApples.get(i).getCustomer())) result = result + soldApples.get(i) + "\n";
+		for (Apple fruit : soldApples) { //can also be Fruit type?
+			if (arg.equals(fruit.getCustomer())) result += fruit + "\n";
 		}
-		for (int i = 0; i < soldStrawberries.size(); i++) {
-			if (arg.equals(soldStrawberries.get(i).getCustomer())) result = result + soldStrawberries.get(i) + "\n";
+		for (Strawberry fruit : soldStrawberries) {
+			if (arg.equals(fruit.getCustomer())) result += fruit + "\n";
 		}
+//		for (int i = 0; i < soldApples.size(); i++) {
+//			if (arg.equals(soldApples.get(i).getCustomer())) result = result + soldApples.get(i) + "\n";
+//		}
+//		for (int i = 0; i < soldStrawberries.size(); i++) {
+//			if (arg.equals(soldStrawberries.get(i).getCustomer())) result = result + soldStrawberries.get(i) + "\n";
+//		}
 		return result;
 	}
 }

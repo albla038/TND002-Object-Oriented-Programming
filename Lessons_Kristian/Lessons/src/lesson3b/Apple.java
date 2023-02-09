@@ -8,7 +8,7 @@ public class Apple extends Fruit{
 	public Apple(String arg1, Fruit arg2, int arg3) {
 		super(arg2);
 		customer = arg1;
-		amount = super.getFruit(arg3);
+		amount = arg2.getFruit(arg3);
 		cost = amount * PRICE;
 	}
 	
