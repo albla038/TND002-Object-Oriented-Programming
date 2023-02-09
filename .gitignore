@@ -60,3 +60,4 @@ local.properties
 #.project
 Labs/.classpath
 Labs/.settings/org.eclipse.jdt.core.prefs
+Labs/.classpath
