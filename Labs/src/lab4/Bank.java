@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Bank {
 	public final String NAME;
 	private ArrayList<Account> theAccounts = new ArrayList<Account>();
+	private ArrayList<Loan> theLoans = new ArrayList<Loan>();
 	
 	public Bank(String name) {
 		NAME = name;
@@ -59,6 +60,13 @@ public class Bank {
 			if (currentAccount.otherAccount != null) {
 				result += currentAccount.otherAccount.toString();
 			}
+			
+			for (Loan e : theLoans) {
+				if (e.otherAccount == currentAccount) {
+					result += e.toString();
+				}
+			}
+			
 		} else {
 			result = "Person does not exist";
 		}
@@ -66,12 +74,81 @@ public class Bank {
 		return result;
 	}
 	
+	public void transfer(String arg1, String arg2, double arg3) {
+		CurrentAccount sendAcc = searchAccount(arg1);
+		CurrentAccount receiveAcc = searchAccount(arg2);
+		
+		if (sendAcc != null && receiveAcc != null) {
+			sendAcc.send(arg3, receiveAcc);
+		}
+	}
+	
+	public void getLoan(CurrentAccount arg) {
+		theLoans.add(new Loan(arg));
+	}
+	
+	public void cashPayment(String arg1, double arg2) {
+		CurrentAccount currentAccount = searchAccount(arg1);
+		
+		double balance = arg2;
+		int counter = 0;
+
+		for (Loan e : theLoans) {
+			if (e.otherAccount == currentAccount) {
+				balance = e.payOff(balance);
+				if (balance > 0) {
+					counter++;
+				} else {
+					break;
+				}
+			}
+		}
+		
+		//for(int i = 0; i < theLoans.size(); i++) {
+		//	if ()
+		//}
+		
+		if (balance > 0) {
+			currentAccount.receive("Cash payment", balance);
+		}
+		
+//		ArrayList<Integer> emptyIndices = new ArrayList<Integer>();
+//		
+//		for (Loan e : theLoans) {
+//			if (e.otherAccount == currentAccount) {
+//				balance = e.payOff(balance);
+//				if (balance > 0) {
+//					emptyIndices.add(theLoans.indexOf(e));
+//				} else {
+//					break;
+//				}
+//			}
+//		}
+//		
+//		for (int i : emptyIndices) {
+//			theLoans.remove(i);
+//		}
+		
+	}
+	
+	public void computeAnnualChange() {
+		for (Account e : theAccounts) {
+			e.annualChange();
+		}
+		
+		for (Loan e : theLoans) {
+			e.annualChange();
+		}
+	}
+	
 	public String toString() {
 		String result = "Bank: " + NAME + "\n";
 		result += "Accounts: " + theAccounts.size() + "\n";
+		result += "Loans: " + theLoans.size() + "\n";
 	
 		double currentBalanceSum = 0;
 		double savingsBalanceSum = 0;
+		double loanBalanceSum = 0;
 		
 		for (Account account : theAccounts) {
 			
@@ -82,6 +159,11 @@ public class Bank {
 			}
 		}
 		
-		return result + "Money in current / savings accounts: " + currentBalanceSum + " / " + savingsBalanceSum;
+		for (Loan loan : theLoans) {
+			loanBalanceSum += loan.getBalance();
+		}
+		
+		return result + "Money in current / savings accounts and debt: "
+					+ currentBalanceSum + " / " + savingsBalanceSum + " / " + loanBalanceSum; 
 	}
 }

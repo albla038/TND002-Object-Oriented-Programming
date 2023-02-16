@@ -65,24 +65,25 @@ public class Account {
 		} else {
 			balance -= 10;
 			if(balance < 0) {
-				getLoan(this);
+				theBank.getLoan((CurrentAccount) this);
 				balance = 0;
 			}
 		}
 	}
 	
 	public String toString() {
-		String result = "";
+		String result = "\n";
 		
 		if (this instanceof CurrentAccount) {
-			result = "Current Account ";
+			result += "Current Account";
 		} else if (this instanceof SavingsAccount) {
-			result = "Savings Account ";
+			result += "Savings Account";
 		} else if (this instanceof Loan) {
-			return "\nLoan:" + balance;
+			result += "Loan";
 		}
 		
-		result += "with account number " + thisAccountNumber + ": " + balance + "\n";
+		//result += "with account number " + thisAccountNumber;
+		result += ": " + balance + "\n";
 		
 		for (String t : transactions) {
 			result += t + "\n";

@@ -26,7 +26,7 @@ public class CurrentAccount extends Account {
 				otherAccount.transactions.add("From current account: " + arg);
 			} else if (arg <= 0) {
 				arg = Math.abs(arg);
-				if(arg <= otherAccount.getBalance()) {
+				if(arg < otherAccount.getBalance()) {
 					otherAccount.setBalance(otherAccount.getBalance() - arg);
 				} else {
 					arg = otherAccount.getBalance();
@@ -46,7 +46,7 @@ public class CurrentAccount extends Account {
 		if (getBalance() < 0) {
 			savings(getBalance());
 			if (getBalance() < 0) {
-				getLoan(getBalance());
+				theBank.getLoan(this);
 				transactions.add("Covered by a loan: " + Math.abs(getBalance()));
 				setBalance(0);
 			}
