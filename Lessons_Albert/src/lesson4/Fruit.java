@@ -21,8 +21,8 @@ public class Fruit {
 	public class Apple {
 		private String name;
 		
-		public Apple(String name) {
-			this.name = name;
+		public Apple(String inName) {
+			name = inName;
 		}
 		
 		public String toString() {
@@ -34,17 +34,28 @@ public class Fruit {
 	}
 	
 	public class Banana {
+		private String name, specifics;
+		private double price;
 		
+		public Banana(String inName, String inSpecifics, double inPrice) {
+			name = inName;
+			specifics = inSpecifics;
+			price = inPrice;
+		}
+		
+		public String diagnostics() {
+			return "Dianosics: " + name + " " + specifics + " " + price;
+		}
 	}
 	
 	public static class Strawberry {
 		private String name, specifics;
 		private double price;
 		
-		public Strawberry(String name, String specifics, double price) {
-			this.name = name;
-			this.specifics = specifics;
-			this.price = price;
+		public Strawberry(String inName, String inSpecifics, double inPrice) {
+			name = inName;
+			specifics = inSpecifics;
+			price = inPrice;
 		}
 		
 		public String computeCost(int amount) {

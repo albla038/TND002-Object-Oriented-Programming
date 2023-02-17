@@ -19,12 +19,12 @@ public class Lesson4 {
 		//System.out.println(theApple.computeCost(1));
 		System.out.println();
 		
-		/*
+		
 		Fruit.Banana theBanana = theFruit.new Banana("Banana", "yellow", 5.0);		
 		System.out.println(theBanana.diagnostics());
 		System.out.println(theBanana);
 		System.out.println();
-		*/
+		
 		
 	}
 
