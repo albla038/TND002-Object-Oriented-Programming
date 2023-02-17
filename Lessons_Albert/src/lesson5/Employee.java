@@ -19,15 +19,11 @@ public abstract class Employee implements Comparable<Employee> {
 		String result = String.format("Name: %17s, "
 				+ "Base salary: %6.2f, ", name, hourlyRate * baseHours);
 		
-		if (this instanceof Programmer) {
-			Programmer p = (Programmer) this;
-			result += String.format("Bonus: %6.2f", p.computeBonus());
+		if (this instanceof ContractWork) {
+			ContractWork temp = (ContractWork) this;
+			result += String.format("Bonus: %6.2f", temp.computeBonus());
 		}
 		
-		if (this instanceof ServiceWorker) {
-			ServiceWorker s = (ServiceWorker) this;
-			result += String.format("Bonus: %6.2f", s.computeBonus());
-		}
 		return result;
 	}
 }
