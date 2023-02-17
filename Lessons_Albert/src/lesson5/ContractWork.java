@@ -2,7 +2,7 @@ package lesson5;
 
 public interface ContractWork {
 
-	public double computeBonus();
+	double computeBonus();
 	
-	public void setHours(int arg);
+	void setHours(int arg);
 }
