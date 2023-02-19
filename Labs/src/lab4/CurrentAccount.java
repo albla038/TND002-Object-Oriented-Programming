@@ -25,16 +25,18 @@ public class CurrentAccount extends Account {
 				transactions.add("To savings account: " + arg);
 				otherAccount.transactions.add("From current account: " + arg);
 			} else if (arg <= 0) {
+				if (otherAccount.getBalance() != 0) { //added
 				arg = Math.abs(arg);
 				if(arg < otherAccount.getBalance()) {
 					otherAccount.setBalance(otherAccount.getBalance() - arg);
 				} else {
-					arg = otherAccount.getBalance();
+					arg = otherAccount.getBalance(); //problem if otherAccount.getBalance() is already 0
 					otherAccount.setBalance(0);
 				}
 				setBalance(getBalance() + arg);
 				otherAccount.transactions.add("To current account: " + arg);
 				transactions.add("From savings account: " + arg);
+				} //added
 			}
 		}
 	}

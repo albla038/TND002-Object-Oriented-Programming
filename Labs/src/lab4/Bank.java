@@ -91,26 +91,38 @@ public class Bank {
 		CurrentAccount currentAccount = searchAccount(arg1);
 		
 		double balance = arg2;
-		int counter = 0;
-
-		for (Loan e : theLoans) {
-			if (e.otherAccount == currentAccount) {
-				balance = e.payOff(balance);
+		//int counter = 0;
+		
+		for (int i = 0; i < theLoans.size(); i++) {
+			if (theLoans.get(i).otherAccount == currentAccount) {
 				if (balance > 0) {
-					counter++;
-				} else {
-					break;
+					balance = theLoans.get(i).payOff(balance);
+					if (balance > 0) {
+						theLoans.remove(i);
+						i--;
+					}
 				}
 			}
 		}
 		
-		//for(int i = 0; i < theLoans.size(); i++) {
-		//	if ()
-		//}
-		
 		if (balance > 0) {
 			currentAccount.receive("Cash payment", balance);
 		}
+
+//		for (Loan e : theLoans) {
+//			if (e.otherAccount == currentAccount) {
+//				balance = e.payOff(balance);
+//				if (balance > 0) {
+//					counter++;
+//				} else {
+//					break;
+//				}
+//			}
+//		}
+		
+//		for(int i = 0; i < theLoans.size(); i++) {
+//			if ()
+//		}
 		
 //		ArrayList<Integer> emptyIndices = new ArrayList<Integer>();
 //		
