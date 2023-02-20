@@ -75,29 +75,26 @@ public class Bank {
 	}
 	
 	public void transfer(String arg1, String arg2, double arg3) {
-		CurrentAccount sendAcc = searchAccount(arg1);
-		CurrentAccount receiveAcc = searchAccount(arg2);
+		CurrentAccount sendAcc = searchAccount(arg1);				// Get accounts from customers (with name arg)
+		CurrentAccount receiveAcc = searchAccount(arg2);			// -//-
 		
-		if (sendAcc != null && receiveAcc != null) {
+		if (sendAcc != null && receiveAcc != null) { 				// Transfer if accounts exist
 			sendAcc.send(arg3, receiveAcc);
 		}
 	}
 	
 	public void getLoan(CurrentAccount arg) {
-		theLoans.add(new Loan(arg));
+		theLoans.add(new Loan(arg));			//Adds loan reference to list
 	}
 	
-	public void cashPayment(String arg1, double arg2) {
+	public void cashPayment(String arg1, double amount) {			// Cash payment to customer
 		CurrentAccount currentAccount = searchAccount(arg1);
-		
-		double balance = arg2;
-		//int counter = 0;
-		
-		for (int i = 0; i < theLoans.size(); i++) {
-			if (theLoans.get(i).otherAccount == currentAccount) {
-				if (balance > 0) {
-					balance = theLoans.get(i).payOff(balance);
-					if (balance > 0) {
+	
+		for (int i = 0; i < theLoans.size(); i++) {					// Loop over all loans in bank
+			if (theLoans.get(i).otherAccount == currentAccount) {	// Find relevant loans connected to customer
+				if (amount > 0) {									// Pay off loans if amount is positive
+					amount = theLoans.get(i).payOff(amount);
+					if (amount >= 0) {								// If loan was paid off completely, remove loan
 						theLoans.remove(i);
 						i--;
 					}
@@ -105,44 +102,13 @@ public class Bank {
 			}
 		}
 		
-		if (balance > 0) {
-			currentAccount.receive("Cash payment", balance);
+		if (amount > 0) {										// If still money left, add to current account
+			currentAccount.receive("Cash payment", amount);
 		}
-
-//		for (Loan e : theLoans) {
-//			if (e.otherAccount == currentAccount) {
-//				balance = e.payOff(balance);
-//				if (balance > 0) {
-//					counter++;
-//				} else {
-//					break;
-//				}
-//			}
-//		}
-		
-//		for(int i = 0; i < theLoans.size(); i++) {
-//			if ()
-//		}
-		
-//		ArrayList<Integer> emptyIndices = new ArrayList<Integer>();
-//		
-//		for (Loan e : theLoans) {
-//			if (e.otherAccount == currentAccount) {
-//				balance = e.payOff(balance);
-//				if (balance > 0) {
-//					emptyIndices.add(theLoans.indexOf(e));
-//				} else {
-//					break;
-//				}
-//			}
-//		}
-//		
-//		for (int i : emptyIndices) {
-//			theLoans.remove(i);
-//		}
 		
 	}
 	
+	// Computes interest rate of all accounts and loans.
 	public void computeAnnualChange() {
 		for (Account e : theAccounts) {
 			e.annualChange();

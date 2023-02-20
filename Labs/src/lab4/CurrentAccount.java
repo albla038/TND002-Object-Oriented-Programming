@@ -41,13 +41,14 @@ public class CurrentAccount extends Account {
 		}
 	}
 	
+	// Send money from calling object to arg2, (arg1 = amount)
 	public void send(double arg1, CurrentAccount arg2) {
 		transactions.add("Sent to account of " + arg2.getCustomer() + ": " + arg1);
 		setBalance(getBalance() - arg1);
-		arg2.receive(getCustomer(), arg1);
-		if (getBalance() < 0) {
-			savings(getBalance());
-			if (getBalance() < 0) {
+		arg2.receive(getCustomer(), arg1);			// Send money
+		if (getBalance() < 0) {						// If amount sent is larger than balance of currentAccount
+			savings(getBalance());					// Retrieve money from savings account
+			if (getBalance() < 0) {					// Take loan if not enough savings
 				theBank.getLoan(this);
 				transactions.add("Covered by a loan: " + Math.abs(getBalance()));
 				setBalance(0);
@@ -56,7 +57,7 @@ public class CurrentAccount extends Account {
 	}
 	
 	public void receive(String arg1, double arg2) {
-		setBalance(getBalance() + arg2);
+		setBalance(getBalance() + arg2);				// Increment value with arg2
 		if(arg1.equals("Cash payment")) {
 			transactions.add("Cash payment: " + arg2);
 		} else {
