@@ -2,10 +2,10 @@ package lecture10;
 
 public class Rectangle extends Shape {
 	
-	private int number;
+	private double number;
 	
-	public Rectangle(double arg1, int arg2) { 
-		area = arg1; number = arg2;
+	public Rectangle(double arg1, double d) { 
+		area = arg1; number = d;
 	}
 	
 	public int compareTo(Rectangle arg) {
