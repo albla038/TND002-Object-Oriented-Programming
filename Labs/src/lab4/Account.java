@@ -23,10 +23,11 @@ public class Account {
 		otherAccount.otherAccount = this;
 	}
 	
+	// Sets arg to otherAccount (other acc to loan)
 	public Account(CurrentAccount arg) {
 		otherAccount = arg;
-		balance = arg.getBalance();
-		thisAccountNumber = arg.getAccountNumber();
+		balance = arg.getBalance();						// Sets loan to negative balance of currentAccount
+		thisAccountNumber = arg.getAccountNumber();		
 		customer = arg.getCustomer();
 	}
 	
@@ -57,15 +58,17 @@ public class Account {
 		return null;
 	}
 	
+	
+	// Adds interest rate to account (depending on account type)
 	public void annualChange() {
-		if(this instanceof SavingsAccount) {
+		if (this instanceof SavingsAccount) {
 			balance *= 1.01;
 		} else if (this instanceof Loan) {
 			balance *= 1.05;
-		} else {
+		} else { //Otherwise is a normal account (currentAccount)
 			balance -= 10;
-			if(balance < 0) {
-				theBank.getLoan((CurrentAccount) this);
+			if (balance < 0) { //Create new loan if balance < 0
+				theBank.getLoan((CurrentAccount) this); 
 				balance = 0;
 			}
 		}
