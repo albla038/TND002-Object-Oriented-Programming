@@ -11,6 +11,8 @@ public class GUI extends JFrame implements ActionListener {
 	
 	private JRadioButton radioButton;
 	
+	private JLabel label;
+	
 	public GUI() {
 		setTitle("Button test");
 		Font theFont = new Font("SansSerif", Font.PLAIN, 25);
@@ -26,13 +28,19 @@ public class GUI extends JFrame implements ActionListener {
 		button2 = new JButton("Button 2");
 		button2.setFont(theFont);
 		button2.addActionListener(this);
+
+		c.add(button1); c.add(button2);
 		
 		radioButton = new JRadioButton("Select me");
 		radioButton.setFont(theFont);
 		radioButton.addActionListener(this);
 		
-		c.add(button1); c.add(button2);
 		c.add(radioButton);
+		
+		label = new JLabel();
+		label.setFont(theFont);
+		label.setOpaque(true);
+		label.setText();
 		
 		pack();
 		setVisible(true);
