@@ -1,6 +1,6 @@
 package lesson5;
 
-import java.util.Collections;
+//import java.util.Collections;
 
 public class Lesson5 {
 
