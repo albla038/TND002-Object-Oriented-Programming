@@ -40,7 +40,6 @@ public class GUI extends JFrame implements ActionListener {
 		label = new JLabel();
 		label.setFont(theFont);
 		label.setOpaque(true);
-		label.setText();
 		
 		pack();
 		setVisible(true);
