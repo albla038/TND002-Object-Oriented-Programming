@@ -17,6 +17,7 @@ public class PhoneBook {
 	
 	public String load(String fileName) {
 		String result;
+		listOfNumbers.clear();
 		
 		File file = new File(fileName);
 		if (!file.exists()) {
@@ -27,13 +28,14 @@ public class PhoneBook {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			String line;
 			while((line = br.readLine()) != null) {
+				line = line.trim();
 				String[] personInfo = line.split(" +");
 				listOfNumbers.add(new Person(personInfo[0], personInfo[1], Integer.valueOf(personInfo[2])));
 			}
 			br.close();
 			result = "Phone book loaded";
 		}
-		catch(IOException ioException){
+		catch (IOException ioException){
 			result = "Try again";
 		}
 		
@@ -62,10 +64,6 @@ public class PhoneBook {
 					result.add(p);
 				}
 			}
-		}
-		
-		if (result.isEmpty()) {
-			System.out.println("Warning. Return list is empty!");
 		}
 		
 		return result;
@@ -110,11 +108,4 @@ public class PhoneBook {
 		}
 		return result;
 	}
-	
-	public void printArray() {
-		for (Person p : listOfNumbers) {
-			System.out.print(p.getFullName() + " " + p.getPhoneNumber() + "\n");
-		}
-	}
-	
 }

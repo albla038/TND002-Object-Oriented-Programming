@@ -17,7 +17,7 @@ public class Person {
 	}
 	
 	public String getFullName() {
-		return givenName + " " + surname; //?? Method or private variable, which is preffered?
+		return givenName + " " + surname;	
 	}
 	
 	public int getPhoneNumber() {
