@@ -31,6 +31,6 @@ public class MarkingSheet {
 	}
 	
 	public String toString() {
-		return "Student : " + getStudentName() + ", Grade: " + grade;
+		return "Student : " + getStudentName() + ", Grade: " + grade + "\n";
 	}
 }

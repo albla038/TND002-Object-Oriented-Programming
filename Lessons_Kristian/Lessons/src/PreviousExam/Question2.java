@@ -1,4 +1,4 @@
-package example2;
+package PreviousExam;
 
 public class Question2 {
 
