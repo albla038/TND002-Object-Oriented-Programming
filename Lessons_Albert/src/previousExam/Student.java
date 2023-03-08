@@ -22,7 +22,7 @@ public class Student {
 	}
 	
 	public String toString() {
-		String result = "Student: " + firstName + " " + secondName;
+		String result = "Student: " + firstName + " " + secondName + "\n";
 		for (MarkingSheet e : theExams) {
 			result += e.getExamName() + ", Grade: " + e.getGrade();
 		}
