@@ -38,7 +38,7 @@ public class Exam {
 	}
 	
 	public String toString() {
-		String result = String.format("%12s, Code: %4d, Maximum points: %2d, Minimum points: %2d\n",
+		String result = String.format("%-12s, Code: %4d, Maximum points: %2d, Minimum points: %2d\n",
 										name, code, maxPoints, minPoints);
 		
 		for (MarkingSheet e : markedStudents) {
