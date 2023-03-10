@@ -20,17 +20,21 @@ public class Question2 {
 	
 		Circle tempCircle = Circle.getCurrentCircle();
 		System.out.println(tempCircle.getName());
-		while(tempCircle.getPreviousCircle() != null) {
-			System.out.println(tempCircle.getPreviousCircle().getName());
+		do {
 			tempCircle = tempCircle.getPreviousCircle();
-		}
+			System.out.println(tempCircle.getName());
+		} while(tempCircle.getPreviousCircle() != null);
 		
 		Square tempSquare = Square.getCurrentSquare();
 		System.out.println("\n" + tempSquare.getName());
-		while(tempSquare.getPreviousSquare() != null) {
-			System.out.println(tempSquare.getPreviousSquare().getName());
+		do {
 			tempSquare = tempSquare.getPreviousSquare();
-		}
+			System.out.println(tempSquare.getName());
+		} while(tempSquare.getPreviousSquare() != null);
+		
+		// System.out.println(Circle.getCurrentCircle().getName());
+		// System.out.println(Cricle.getCurrentCircle().getPreviousCircle().getName());
+		// System.out.println(Cricle.getCurrentCircle().getPreviousCircle().getPreviousCircle().getName());
 	}
 
 }

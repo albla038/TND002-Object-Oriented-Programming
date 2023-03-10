@@ -1,15 +1,15 @@
 package PreviousExam;
 
 public class Circle extends Shape{
-	private static Circle currentCircle;
-	private Circle previousCircle;
+	private static Circle currentCircle = null;
+	private Circle previousCircle = null;
 	private double radius;
 	
 	public Circle(double arg) {
 		super("Circle");
 		radius = arg;
 		computeArea();
-		previousCircle = currentCircle;
+		if(currentCircle != null) previousCircle = currentCircle; //make sure first previous circle is null
 		currentCircle = this;
 	}
 	

@@ -8,7 +8,7 @@ public abstract class Shape implements Comparable<Shape>{
 	protected double area;
 	private static int counter = 1;
 	private String name;
-	public static int CIRCLE = 0, SQUARE = 1;
+	public static final int CIRCLE = 0, SQUARE = 1;
 	
 	public Shape(String arg) {
 		name = arg + counter;
@@ -25,6 +25,10 @@ public abstract class Shape implements Comparable<Shape>{
 			result += e.toString();
 		}
 		
+		//for (int i = 0; int < allShapes.size(); i++) {
+		//	result = result + allShapes.get(i).toString() + "\n";
+		//}
+		
 		return result;
 	}
 	
@@ -34,6 +38,7 @@ public abstract class Shape implements Comparable<Shape>{
 	
 	public static String sortedListing(int arg) {
 		String result = "Sorted";
+		//ArrayList<Shape> temp = new ArrayList<Shape>();
 		Collections.sort(allShapes);
 		if(arg == CIRCLE) {
 			result += " circles\n";
@@ -43,6 +48,16 @@ public abstract class Shape implements Comparable<Shape>{
 				}
 			}
 			
+			//for (int i=0; i < allShapes.size(); i++) {
+			//	if (allShapes.get(i) instanceof Circle) {
+			//		temp.add(allShapes.get(i);
+			//	}
+			//}
+			//Collenctions.sort(temp);
+			//for (int i=0; i < temp.size(); i++) {
+			//	result = result + temp.get(i) + "\n";
+			//}
+			
 		} else {
 			result += " squares\n";
 			for(Shape e : allShapes) {
@@ -50,11 +65,23 @@ public abstract class Shape implements Comparable<Shape>{
 					result += e.toString();
 				}
 			}
+			
+			//for (int i=0; i < allShapes.size(); i++) {
+			//	if (allShapes.get(i) instanceof Square) {
+			//		temp.add(allShapes.get(i);
+			//	}
+			//}
+			//Collenctions.sort(temp);
+			//for (int i=0; i < temp.size(); i++) {
+			//	result = result + temp.get(i) + "\n";
+			//}
+			
 		}
 		return result;
 	}
 	
 	public int compareTo(Shape arg) {
+		computeArea(); arg.computeArea(); //make sure there is an area, class methods
 		int result = 2;
 		if (area == arg.area) {
 			result = 0;
@@ -64,6 +91,10 @@ public abstract class Shape implements Comparable<Shape>{
 			result = 1;
 		}
 		return result;
+		
+		//if (area > arg.area) return 11;
+		//else if (area < arg.area) return -1;
+		//else return 0;
 	}
 	
 	public String toString() {
