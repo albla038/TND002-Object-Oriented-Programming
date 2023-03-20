@@ -114,11 +114,11 @@ public class GUI extends JFrame implements ActionListener {
 			String[] elements = input.split(" ");
 			
 			if (validateInput(elements)) { // Run only if valid input
-				double sum = Double.parseDouble(elements[0]);
+				double sum = Double.parseDouble(elements[0]); // Set sum to value of first element
 				
 				// CALCULATION ALGORYTHM. Does not take order of operations in account
 				for (int i = 1; i < elements.length - 1; i += 2) { // Iterate over operators (odd indices)
-					double nextNumber = Double.parseDouble(elements[i + 1]);
+					double nextNumber = Double.parseDouble(elements[i + 1]); // Parse value of next number to double value
 					
 					switch (elements[i]) {
 						case "+": {
@@ -160,7 +160,7 @@ public class GUI extends JFrame implements ActionListener {
 	public boolean validateInput(String[] arg) {
 		int length = arg.length;
 		
-		if ((length >= 4) && (length % 2 == 0) && (arg[length - 1].equals("="))) {
+		if ((length % 2 == 0) && (arg[length - 1].equals("="))) {
 			
 			// Validate that even indices are numbers and odd are operators 
 			for (int i = 0; i < arg.length; i++) {
@@ -178,6 +178,7 @@ public class GUI extends JFrame implements ActionListener {
 			}
 			
 			return true;
+			
 		} else {
 			return false;
 		}
