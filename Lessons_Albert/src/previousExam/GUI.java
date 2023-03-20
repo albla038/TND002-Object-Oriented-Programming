@@ -2,6 +2,9 @@ package previousExam;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import javax.swing.*;
 
@@ -84,6 +87,7 @@ public class GUI extends JFrame implements ActionListener {
 		secondRowGrid.add(equalsButton);
 		
 		// Final GUI code
+		textField.requestFocus();
 		pack();
 		setTitle("Pocket calculator");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -109,42 +113,97 @@ public class GUI extends JFrame implements ActionListener {
 		
 		// RETURN MODE
 		if (returnRadioButton.isSelected() && e.getSource() == textField) {
+			calculate();
+		}		
+		
+		// BUTTON MODE
+		if (e.getSource() == plusButton) {
+			addOperationSign("+");
+		}
+		
+		if (e.getSource() == minusButton) {
+			addOperationSign("-");
+		}
+		
+		if (e.getSource() == divButton) {
+			addOperationSign("/");
+		}
+		
+		if (e.getSource() == multiButton) {
+			addOperationSign("*");
+		}
+
+		if (e.getSource() == equalsButton) {
+			addOperationSign("=");
+			calculate();
+		}
+	}
+	
+	public void addOperationSign(String operation) {
+		String input = textField.getText().trim();
+		textField.setText(input + " " + operation + " ");
+		textField.requestFocus();
+	}
+	
+	public void calculate() {
+		String input = textField.getText().trim(); // Get text input from textField and trim leading and trailing whitespace.
+		String[] inputElements = input.split(" +");
+		
+		if (validateInput(inputElements)) { 						// Run only if valid input
+			ArrayList<String> elements = new ArrayList<String>(); 	// ArrayList for more flexibility
+			Collections.addAll(elements, inputElements);			// Add all elements from validated input to ArrayList
 			
-			String input = textField.getText().trim(); // Get text input from textField and trim leading and trailing whitespace.
-			String[] elements = input.split(" ");
+			// Loop over each operator separately to follow order of operations
 			
-			if (validateInput(elements)) { // Run only if valid input
-				double sum = Double.parseDouble(elements[0]); // Set sum to value of first element
-				
-				// CALCULATION ALGORYTHM. Does not take order of operations in account
-				for (int i = 1; i < elements.length - 1; i += 2) { // Iterate over operators (odd indices)
-					double nextNumber = Double.parseDouble(elements[i + 1]); // Parse value of next number to double value
-					
-					switch (elements[i]) {
-						case "+": {
-							sum += nextNumber;
-							break;
-						}
-						case "-": {
-							sum -= nextNumber;
-							break;
-						}
-						case "/": {
-							sum /= nextNumber;
-							break;
-						}
-						case "*": {
-							sum *= nextNumber;
-							break;
-						}
-					}
+			for (int i = 1; i < elements.size()-1; i += 2) { // Iterate over operators (odd indices)
+				if (elements.get(i).equals("*")) {
+					double previousNumber = Double.parseDouble(elements.get(i-1));			// Get element (number) before operator
+					double nextNumber = Double.parseDouble(elements.get(i+1));				// and after
+					String calculation = String.valueOf((previousNumber * nextNumber));		// Do calculation
+					elements.set(i-1, calculation);											// Set calculation result to index of first number
+					elements.remove(i); elements.remove(i);									// Remove index with used operation and "nextNumber"
+					i -= 2;																	// Decrement by 2 as size has been decreased by 2
 				}
-				
-				label.setText(input + " " + sum);
-				
-			} else {
-				label.setText("Error");
 			}
+			
+			for (int i = 1; i < elements.size()-1; i += 2) { // Iterate over operators (odd indices)
+				if (elements.get(i).equals("/")) {
+					double previousNumber = Double.parseDouble(elements.get(i-1));
+					double nextNumber = Double.parseDouble(elements.get(i+1));
+					String calculation = String.valueOf((previousNumber / nextNumber));
+					elements.set(i-1, calculation);
+					elements.remove(i); elements.remove(i);
+					i -= 2;
+				}
+			}
+			
+			for (int i = 1; i < elements.size()-1; i += 2) { // Iterate over operators (odd indices)
+				if (elements.get(i).equals("-")) {
+					double previousNumber = Double.parseDouble(elements.get(i-1));
+					double nextNumber = Double.parseDouble(elements.get(i+1));
+					String calculation = String.valueOf((previousNumber - nextNumber));
+					elements.set(i-1, calculation);
+					elements.remove(i); elements.remove(i);
+					i -= 2;
+				}
+			}
+			
+			for (int i = 1; i < elements.size()-1; i += 2) { // Iterate over operators (odd indices)
+				if (elements.get(i).equals("+")) {
+					double previousNumber = Double.parseDouble(elements.get(i-1));
+					double nextNumber = Double.parseDouble(elements.get(i+1));
+					String calculation = String.valueOf((previousNumber + nextNumber));
+					elements.set(i-1, calculation);
+					elements.remove(i); elements.remove(i);
+					i -= 2;
+				}
+			}
+			
+			label.setText(input + " " + elements.get(0));
+			textField.setText("");
+			
+		} else {
+			label.setText("Error");
 		}
 	}
 	
