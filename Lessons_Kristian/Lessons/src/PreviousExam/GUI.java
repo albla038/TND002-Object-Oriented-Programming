@@ -121,10 +121,106 @@ public class GUI extends JFrame implements ActionListener{
 			equalButton.setEnabled(false);	
 		}
 		
-		if(e.getSource() == topText) {
-			String temp = topText.getText();
-			topText.setText("");
+		if((e.getSource() == topText && returnButton.isSelected()) || e.getSource() == equalButton) {
 			
+			String temp = topText.getText() + " = ";
+			
+			if(e.getSource() == equalButton) {
+				
+			}
+			
+			String[] tempArray = temp.split(" +");
+			System.out.println(tempArray.length);
+			double result = 0;
+			double tempVar = 0;
+			
+			if (tempArray[tempArray.length - 1].equals("=")) {
+				
+				topText.setText("");
+				
+				for (int i = 0; i < tempArray.length; i++) {
+					if (!(tempArray[i].equals("="))) {
+						if (tempArray[i].equals("-")) {
+							i += 1;
+							tempVar = -1 * Double.parseDouble(tempArray[i]);
+							i += 1;
+						} else if (!(tempArray[i].equals("*")) && !(tempArray[i].equals("/"))){
+							tempVar = Double.parseDouble(tempArray[i]);
+							i += 1;
+						}
+						
+						if (tempArray[i].equals("*")) {
+							i += 1;
+							tempVar = tempVar * Double.parseDouble(tempArray[i]);
+							i += 1;
+						} else if (tempArray[i].equals("/")) {
+							i += 1;
+							tempVar = tempVar / Double.parseDouble(tempArray[i]);
+							i += 1;
+						}
+						
+						if (tempArray[i].equals("-")){
+							i -= 1;
+						}
+						
+						if (!(tempArray[i].equals("*")) && !(tempArray[i].equals("/"))) {
+							result += tempVar;
+						}
+					}
+				}
+				bottomText.setText(temp + " " + result);
+			}
+			
+//			for (int i=1; i < tempArray.length; i++) {
+//				
+//				if (tempArray[i - 1] == "+" && tempArray[i + 1] != "*" && tempArray[i + 1] != "/") {
+//					result += Double.parseDouble(tempArray[i]);
+//				}
+//				
+//				if (tempArray[i - 1] == "-" && tempArray[i + 1] != "*" && tempArray[i + 1] != "/") {
+//					result -= Double.parseDouble(tempArray[i]);
+//				}
+//				
+//				if (tempArray[i + 1] == "*") {
+//					if (tempArray[i - 1] == "-") {
+//						result -= Double.parseDouble(tempArray[i]) * Double.parseDouble(tempArray[i + 2]);
+////						while (tempArray[i + 3] == "*") {
+////							
+////						}
+//					} else {
+//						result += Double.parseDouble(tempArray[i]) * Double.parseDouble(tempArray[i + 2]);
+//					}
+//				}
+//				
+//				if (tempArray[i + 1] == "/") {
+//					if (tempArray[i - 1] == "-") {
+//						result -= Double.parseDouble(tempArray[i]) / Double.parseDouble(tempArray[i + 2]);
+////						while (tempArray[i + 3] == "*") {
+////							
+////						}
+//					} else {
+//						result += Double.parseDouble(tempArray[i]) / Double.parseDouble(tempArray[i + 2]);
+//					}
+//				}
+//			}
+//			
+//			bottomText.setText(temp + " " + result);
+		}
+		
+		if(e.getSource() == addButton) {
+			topText.setText(topText.getText() + " + ");
+		}
+		
+		if(e.getSource() == subButton) {
+			topText.setText(topText.getText() + " - ");
+		}
+		
+		if(e.getSource() == divButton) {
+			topText.setText(topText.getText() + " / ");
+		}
+		
+		if(e.getSource() == multButton) {
+			topText.setText(topText.getText() + " * ");
 		}
 	}
 	
